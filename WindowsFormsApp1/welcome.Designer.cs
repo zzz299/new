@@ -1,4 +1,6 @@
-﻿namespace news
+﻿using System.Windows.Forms;
+
+namespace news
 {
     partial class welcome
     {
@@ -127,7 +129,7 @@
             // 
             // listView1
             // 
-            this.listView1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.listView1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.listView1.BackgroundImageTiled = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
@@ -161,21 +163,20 @@
             this.columnHeader1.DisplayIndex = 0;
             this.columnHeader1.Text = "新闻名称";
             this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader1.Width = 168;
+            this.columnHeader1.Width = 70;
             // 
             // columnHeader2
             // 
             this.columnHeader2.DisplayIndex = 1;
             this.columnHeader2.Text = "作者";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 85;
             // 
             // columnHeader3
             // 
             this.columnHeader3.DisplayIndex = 2;
             this.columnHeader3.Text = "内容";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 271;
+            this.columnHeader3.Width = 380;
             // 
             // button4
             // 
@@ -271,6 +272,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private Button btn = new Button();
     }
 }
 

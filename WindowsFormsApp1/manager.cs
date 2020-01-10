@@ -15,21 +15,14 @@ namespace news
     public partial class manager : CCSkinMain
     {
         DBHelper db;
-        System.IO.FileInfo file;
-        string destinationFile = "";
+
         int limit = -1;//-1初始值；0最高级别管理员；1新闻审核员
         public enum newsType
         {
             社会 = 0,
             国际 = 1,
             军事 = 2,
-            时尚 = 3,
-            娱乐 = 4,
-            搞笑 = 5,
-            八卦 = 6,
-            体育 = 7,
-            汽车 = 8,
-            历史 = 9
+            历史 = 3
 
         }
         public manager()
@@ -64,35 +57,6 @@ namespace news
             }
         }
 
-        /*上传图片*/
-        /*private void button1_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "图片|*.jpg";
-            ofd.ValidateNames = true;
-            ofd.CheckPathExists = true;
-            ofd.CheckFileExists = true;
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                file = new System.IO.FileInfo(ofd.FileName);
-                //其他代码
-                pic.Text = ofd.FileName;
-                destinationFile = @"\pic\" + file.Name;
-                try
-                {
-                    if (file.Exists)
-                    {
-                        file.CopyTo(System.Windows.Forms.Application.StartupPath + destinationFile, true);
-                        MessageBox.Show("图片上传成功");
-                    }
-                }
-                catch
-                {
-
-                }
-            }
-        }*/
-
         private void addnews_Click(object sender, EventArgs e)
         {
             string tip = "";
@@ -120,25 +84,7 @@ namespace news
                 string author_str = author.Text.ToString().Trim();
                 string datatime_str = dateTimePicker1.Text.ToString().Trim();
                 string context = newsarticle.Text.ToString().Trim();
-                //把文章内容存入\newscontext\标题.txt
                 Boolean context_success = true;
-                /*try
-                {
-                    contextFile = @"\newscontext\" + title_str + ".txt";
-                    StreamWriter sw = new StreamWriter(System.Windows.Forms.Application.StartupPath + contextFile, false, System.Text.Encoding.Default);//第二个参数false覆盖
-                    for (int index = 0; index < newsarticle.Lines.GetUpperBound(0); index++)
-                    {
-                        sw.WriteLine(newsarticle.Lines[index]);
-                    }
-                    sw.Close();
-
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine("正文写入错误");
-                    Console.WriteLine(ex.Message);
-                    context_success = false;
-                }*/
                 if (context_success)
                 {
                     Boolean addSuccess = db.addNews(title_str, type_int, author_str, datatime_str, context);

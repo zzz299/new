@@ -17,21 +17,12 @@ namespace news
         int news_id;
         DBHelper db;
         DataSet newsdate;
-        System.IO.FileInfo file;
-        string destinationFile = "";
         public enum newsType
         {
             社会 = 0,
             国际 = 1,
             军事 = 2,
-            时尚 = 3,
-            娱乐 = 4,
-            搞笑 = 5,
-            八卦 = 6,
-            体育 = 7,
-            汽车 = 8,
-            历史 = 9
-
+            历史 = 3
         }
         public update_news()
         {
@@ -57,28 +48,7 @@ namespace news
                 author.Text = newsdate.Tables[0].Rows[0]["author"].ToString();
                 newstype.SelectedIndex = int.Parse(newsdate.Tables[0].Rows[0]["type"].ToString());
                 dateTimePicker1.Text = newsdate.Tables[0].Rows[0]["time"].ToString();
-                string contextFile = "";
-                try
-                {
-                    contextFile = System.Windows.Forms.Application.StartupPath + newsdate.Tables[0].Rows[0]["context"].ToString();
-                    //System.Console.WriteLine("文章路径"+contextFile);
-                    FileStream fs = new FileStream(contextFile, FileMode.Open, FileAccess.Read);
-                    StreamReader sr = new StreamReader(fs, Encoding.Default);
-                    List<string> lists = this.newsarticle.Lines.ToList<string>();
-                    string line = null;
-                    while((line = sr.ReadLine()) != null)
-                    {
-                        lists.Add(line);
-                    }
-                    sr.Close();
-                    this.newsarticle.Lines = lists.ToArray();
-
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine("正文读取错误");
-                    Console.WriteLine(ex.Message);
-                }
+                newsarticle.Text = newsdate.Tables[0].Rows[0]["context"].ToString();
             }
 
         }

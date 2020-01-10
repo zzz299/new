@@ -167,12 +167,6 @@
             "社会",
             "国际",
             "军事",
-            "时尚",
-            "娱乐",
-            "搞笑",
-            "八卦",
-            "体育",
-            "汽车",
             "历史"});
             this.newstype.Location = new System.Drawing.Point(67, 92);
             this.newstype.Name = "newstype";

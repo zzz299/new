@@ -11,7 +11,7 @@ using CCWin;//窗体美化
 
 namespace news
 {
-
+    
     public partial class welcome : CCSkinMain
     {
         public int sign_in_state = 0;//0:未登录;1:用户登录;2:管理员登录
@@ -35,141 +35,6 @@ namespace news
             db = new DBHelper();
             db.Connection();
         }
-
-        /*public void change_ToolStripMenuItem(int oldType, int newType)
-        {
-            load_news();
-            switch (oldType)
-            {
-                case (int)newsType.社会:
-                    社会ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.国际:
-                    国际ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.军事:
-                    军事ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.时尚:
-                    时尚ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.娱乐:
-                    娱乐ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.搞笑:
-                    搞笑ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.八卦:
-                    八卦ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.体育:
-                    体育ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.汽车:
-                    汽车ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-                case (int)newsType.历史:
-                    历史ToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-                    break;
-            }
-
-            switch (newType)
-            {
-                case (int)newsType.社会:
-                    社会ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.国际:
-                    国际ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.军事:
-                    军事ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.时尚:
-                    时尚ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.娱乐:
-                    娱乐ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.搞笑:
-                    搞笑ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.八卦:
-                    八卦ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.体育:
-                    体育ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.汽车:
-                    汽车ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-                case (int)newsType.历史:
-                    历史ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(128, 208, 255);
-                    break;
-            }
-        }
-        private void 社会ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.社会);
-            newsTypechosed = (int)newsType.社会;
-        }
-
-        private void 国际ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.国际);
-            newsTypechosed = (int)newsType.国际;
-        }
-
-        private void 军事ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.军事);
-            newsTypechosed = (int)newsType.军事;
-        }
-
-        private void 时尚ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.时尚);
-            newsTypechosed = (int)newsType.时尚;
-        }
-
-        private void 娱乐ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.娱乐);
-            newsTypechosed = (int)newsType.娱乐;
-        }
-
-        private void 搞笑ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.搞笑);
-            newsTypechosed = (int)newsType.搞笑;
-        }
-
-        private void 八卦ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.八卦);
-            newsTypechosed = (int)newsType.八卦;
-        }
-
-        private void 体育ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.体育);
-            newsTypechosed = (int)newsType.体育;
-        }
-
-        private void 汽车ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.汽车);
-            newsTypechosed = (int)newsType.汽车;
-        }
-
-        private void 历史ToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            change_ToolStripMenuItem(newsTypechosed, (int)newsType.历史);
-            newsTypechosed = (int)newsType.历史;
-        }*/
-
-        /*
-         * 按下登录按钮
-         */
         private void button1_Click(object sender, EventArgs e)
         {
             Form form_sign_in = new sign_in();
@@ -241,61 +106,41 @@ namespace news
             listView1.Items.Clear();
             ds = db.find_newsByType(a);
             int s = 0;
-            if (ds!= null)
+            if (ds.Tables.Count!= 0)
             {
                 while (s < ds.Tables[0].Rows.Count)
                 {
                     ListViewItem lt = new ListViewItem();
-                    
+                    //ListViewItem[] lvs = new ListViewItem[5];
                     lt.Text = "";
                     lt.SubItems.Add(ds.Tables[0].Rows[s][0].ToString());
                     lt.SubItems.Add(ds.Tables[0].Rows[s][1].ToString());
                     lt.SubItems.Add(ds.Tables[0].Rows[s][2].ToString());
+                    string d = " ";
+                    lt.SubItems.Add(d);
                     listView1.Items.Add(lt);
                     s++;
                 }
             }
-            /*for (int i = 0; i < panel1.Controls.Count; i++)
-            {
-                if (panel1.Controls[i] is Panel)
-                {
-                    for (int j = 0; j < (panel1.Controls[i] as Panel).Controls.Count; j++)
-                    {
-                        try
-                        {
-                            if (!(ds.Tables[0].Rows.Count > i))//若没有新闻了就把小panel隐藏
-                            {
-                                (panel1.Controls[i] as Panel).Visible = false;
-                                continue;
-                            }
-                            else
-                            {
-                                (panel1.Controls[i] as Panel).Visible = true;
-                            }
-                            if ((panel1.Controls[i] as Panel).Controls[j] is Label)
-                            {//填充标题 
-                                ((panel1.Controls[i] as Panel).Controls[j] as Label).Text = ds.Tables[0].Rows[i]["title"].ToString();
-                            }
-                            else if ((panel1.Controls[i] as Panel).Controls[j] is PictureBox)
-                            {//填充图片
-                             //使tag携带新闻id
-                                ((panel1.Controls[i] as Panel).Controls[j] as PictureBox).Tag = ds.Tables[0].Rows[i]["id"].ToString();
-                                string picpath = System.Windows.Forms.Application.StartupPath + ds.Tables[0].Rows[i]["picture"].ToString();
-                                ((panel1.Controls[i] as Panel).Controls[j] as PictureBox).Image = Image.FromFile(picpath);
-                            }
-                        }
-                        catch
-                        {
-                            
-                        }
-                    }
-                }
-            }*/
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (this.listView1.SelectedItems.Count > 0 && sign_in_state==1)
+            {
+                string x = listView1.SelectedItems[0].SubItems[1].Text.ToString();//选中行的第一列的值
+                string y = listView1.SelectedItems[0].SubItems[2].Text.ToString();//选中行的第二列的值
+                string z = listView1.SelectedItems[0].SubItems[3].Text.ToString();//选中行的第三列的值
+                Form s = new commend(x,name);
+                s.Show();
+            }
+        }
+        private void button_Click(object sender, EventArgs e)
+        {
+            string x = listView1.SelectedItems[0].SubItems[1].Text.ToString();//选中行的第一列的值
+            string y = listView1.SelectedItems[0].SubItems[2].Text.ToString();//选中行的第二列的值
+            string z = listView1.SelectedItems[0].SubItems[3].Text.ToString();//选中行的第三列的值
+            Form s = new commend(x,name);
+            s.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -314,11 +159,6 @@ namespace news
         private void button8_Click(object sender, EventArgs e)
         {
             load_news(3);
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

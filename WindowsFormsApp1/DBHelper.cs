@@ -129,9 +129,8 @@ namespace news
          */
         public Boolean addNews(string title, int type, string author, string datatime, string context)
         {
-            //标题，分类，作者，日期，图片路径，正文
+            //标题，分类，作者，日期，正文
             Boolean success = false;
-            //string search_psd = "";
             try
             {
                 con.Open();
@@ -355,7 +354,7 @@ namespace news
          */
         public Boolean update_News(int id, string title, int type, string author, string datatime, string context)
         {
-            //标题，分类，作者，日期，图片路径，正文
+            //标题，分类，作者，日期，正文
             Boolean success = false;
             //string search_psd = "";
             try
@@ -436,17 +435,17 @@ namespace news
         }
 
         /*
-         * 获取特定id 的评论
+         * 获取特定新闻的评论
          * 返回值：DataSet
          */
-        public DataSet find_commendBynewsid(int news_id)
+        public DataSet find_commendBynewsname(string news_name)
         {
             DataSet ds = new DataSet();
             try
             {
                 con.Open();
                 string sql;
-                sql = "select * from commend where news_id = " + news_id + "";
+                sql = "select user_name,commend_text,time from commend where news_name = '" + news_name + "'";
                 //获取数据数据适配器
                 MySqlDataAdapter data = new MySqlDataAdapter(sql, con);
                 data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
@@ -462,17 +461,17 @@ namespace news
 
         /*
          * 添加评论
-         * 参数：user_name 用户名 ；news_id 新闻id ；commend_text 评论内容；time评论时间
+         * 参数：user_name 用户名 ；news_name 新闻名称 ；commend_text 评论内容；time评论时间
          * 返回值：true评论成功
          */
-        public Boolean addCommend(string user_name, int news_id, string commend_text, string time)
+        public Boolean addCommend(string user_name, string news_name, string commend_text, string time)
         {
             Boolean success = false;
             try
             {
                 con.Open();
                 string sql;
-                sql = "insert into commend(user_name,news_id,commend_text,time)Values('" + user_name + "'," + news_id + ",'" + commend_text + "','" + time + "')";
+                sql = "insert into commend(user_name,news_name,commend_text,time)Values('" + user_name + "','" + news_name + "','" + commend_text + "','" + time + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 success = true;
@@ -518,7 +517,7 @@ namespace news
         /*新闻通过审核*/
         public Boolean update_NewsPassed(int id)
         {
-            //标题，分类，作者，日期，图片路径，正文
+            //标题，分类，作者，日期，正文
             Boolean success = false;
             //string search_psd = "";
             try

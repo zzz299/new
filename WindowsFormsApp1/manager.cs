@@ -154,7 +154,21 @@ namespace news
             {
                 name = name_TextBox.Text.ToString().Trim();
                 password = password_TextBox.Text.ToString().Trim();
-                int register_state = db.addAdmin(name, password);
+                string limited = comboBox1.Text.ToString().Trim();
+                int limits=0;
+                if(limited=="0")
+                {
+                    limits = 0;
+                }
+                else if(limited=="1")
+                    {
+                    limits = 1;
+                }
+                else if(limited=="2")
+                {
+                    limits = 2;
+                }
+                int register_state = db.addAdmin(name, password,limited);
 
                 switch (register_state)
                 {
@@ -262,6 +276,11 @@ namespace news
             {
                 MessageBox.Show("审核失败");
             }
+        }
+
+        private void skinRadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
         }
     }
 }

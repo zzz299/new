@@ -55,6 +55,9 @@
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.title = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage3 = new CCWin.SkinControl.SkinTabPage();
+            this.panel1 = new CCWin.SkinControl.SkinPanel();
+            this.label1 = new CCWin.SkinControl.SkinLabel();
+            this.comboBox1 = new CCWin.SkinControl.SkinComboBox();
             this.skinPanel1 = new CCWin.SkinControl.SkinPanel();
             this.skinLabel11 = new CCWin.SkinControl.SkinLabel();
             this.skinLabel10 = new CCWin.SkinControl.SkinLabel();
@@ -85,6 +88,7 @@
             this.skinTabControl1.SuspendLayout();
             this.skinTabPage1.SuspendLayout();
             this.skinTabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.skinPanel1.SuspendLayout();
             this.skinTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView2)).BeginInit();
@@ -118,7 +122,7 @@
             this.skinTabControl1.PageHover = null;
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 3;
+            this.skinTabControl1.SelectedIndex = 1;
             this.skinTabControl1.Size = new System.Drawing.Size(642, 428);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 0;
@@ -372,6 +376,7 @@
             // skinTabPage3
             // 
             this.skinTabPage3.BackColor = System.Drawing.Color.White;
+            this.skinTabPage3.Controls.Add(this.panel1);
             this.skinTabPage3.Controls.Add(this.skinPanel1);
             this.skinTabPage3.Controls.Add(this.skinButton1);
             this.skinTabPage3.Controls.Add(this.skinRadioButton2);
@@ -388,6 +393,47 @@
             this.skinTabPage3.TabIndex = 2;
             this.skinTabPage3.TabItemImage = null;
             this.skinTabPage3.Text = "添加用户";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.panel1.DownBack = null;
+            this.panel1.Location = new System.Drawing.Point(147, 341);
+            this.panel1.MouseBack = null;
+            this.panel1.Name = "panel1";
+            this.panel1.NormlBack = null;
+            this.panel1.Size = new System.Drawing.Size(295, 35);
+            this.panel1.TabIndex = 25;
+            this.panel1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BorderColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(98, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "等级";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2"});
+            this.comboBox1.Location = new System.Drawing.Point(157, 7);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(94, 24);
+            this.comboBox1.TabIndex = 24;
+            this.comboBox1.WaterText = "";
             // 
             // skinPanel1
             // 
@@ -563,6 +609,7 @@
             this.skinRadioButton2.TabStop = true;
             this.skinRadioButton2.Text = "管理员";
             this.skinRadioButton2.UseVisualStyleBackColor = false;
+            this.skinRadioButton2.CheckedChanged += new System.EventHandler(this.skinRadioButton2_CheckedChanged);
             // 
             // skinRadioButton1
             // 
@@ -995,6 +1042,8 @@
             this.skinTabPage1.PerformLayout();
             this.skinTabPage3.ResumeLayout(false);
             this.skinTabPage3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.skinPanel1.ResumeLayout(false);
             this.skinPanel1.PerformLayout();
             this.skinTabPage2.ResumeLayout(false);
@@ -1050,5 +1099,8 @@
         private CCWin.SkinControl.SkinButton skinButton6;
         private CCWin.SkinControl.SkinButton skinButton7;
         private CCWin.SkinControl.SkinDataGridView skinDataGridView3;
+        private CCWin.SkinControl.SkinPanel panel1;
+        private CCWin.SkinControl.SkinLabel label1;
+        private CCWin.SkinControl.SkinComboBox comboBox1;
     }
 }

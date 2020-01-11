@@ -130,9 +130,18 @@ namespace news
                 string x = listView1.SelectedItems[0].SubItems[1].Text.ToString();//选中行的第一列的值
                 string y = listView1.SelectedItems[0].SubItems[2].Text.ToString();//选中行的第二列的值
                 string z = listView1.SelectedItems[0].SubItems[3].Text.ToString();//选中行的第三列的值
+                MessageBox.Show(z);
                 Form s = new commend(x,name);
                 s.Show();
             }
+            if(this.listView1.SelectedItems.Count > 0 && sign_in_state != 1)
+            {
+                string x = listView1.SelectedItems[0].SubItems[1].Text.ToString();//选中行的第一列的值
+                string y = listView1.SelectedItems[0].SubItems[2].Text.ToString();//选中行的第二列的值
+                string z = listView1.SelectedItems[0].SubItems[3].Text.ToString();//选中行的第三列的值
+                MessageBox.Show(z);
+            }
+
         }
         private void button_Click(object sender, EventArgs e)
         {

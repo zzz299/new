@@ -156,7 +156,7 @@ namespace news
          * 添加管理员
          * 返回值：0用户名已存在;1注册成功;-1注册失败
          */
-        public int addAdmin(string name, string password)
+        public int addAdmin(string name, string password,string limit)
         {
             Boolean Havename = false;//是否存在相同用户
             Boolean register_success = false;
@@ -174,7 +174,7 @@ namespace news
                 }
                 else//用户不存在，向数据库中添加新用户
                 {
-                    sql = "insert into admin_info(name,password)Values('" + name + "','" + password + "')";
+                    sql = "insert into admin_info(name,password,`limit`)Values('" + name + "','" + password + "','"+limit+"')";
                     MySqlCommand cmd = new MySqlCommand(sql, con);
                     cmd.ExecuteNonQuery();
                     register_success = true;

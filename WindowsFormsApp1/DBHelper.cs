@@ -382,15 +382,18 @@ namespace news
          * 删除新闻
          * 返回值：true成功删除
          */
-        public Boolean delete_news(int id)
+        public Boolean delete_news(int id,string newsname)
         {
             Boolean success = false;
             try
             {
                 con.Open();
-                string sql = "delete news where id = " + id;
+                string sql = "delete from news where id = " + id;
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
+                sql = "delete from commend where news_name = '" + newsname + "'";
+                MySqlCommand cmd1 = new MySqlCommand(sql, con);
+                cmd1.ExecuteNonQuery();
                 success = true;
                 con.Close();
             }

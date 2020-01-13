@@ -244,7 +244,8 @@ namespace news
         {
             int id;
             id = int.Parse(this.skinDataGridView2[0, skinDataGridView2.CurrentRow.Index].Value.ToString());
-            Boolean delete_success = db.delete_news(id);
+            string newsname = this.skinDataGridView2[1, skinDataGridView2.CurrentRow.Index].Value.ToString();
+            Boolean delete_success = db.delete_news(id,newsname);
             if (delete_success)
             {
                 skinDataGridView2.DataSource = db.show_newstable().Tables[0];

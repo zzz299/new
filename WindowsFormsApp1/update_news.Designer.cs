@@ -287,6 +287,7 @@
             this.MinimizeBox = false;
             this.Name = "update_news";
             this.Text = "修改新闻";
+            this.TitleOffset = new System.Drawing.Point(5, 2);
             this.Load += new System.EventHandler(this.update_news_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

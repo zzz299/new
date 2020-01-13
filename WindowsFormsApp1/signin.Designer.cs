@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sign_in));
             this.skinPictureBox1 = new CCWin.SkinControl.SkinPictureBox();
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
@@ -46,7 +47,6 @@
             // 
             this.skinPictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.skinPictureBox1.ErrorImage = null;
-            //this.skinPictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Box1_Image;
             this.skinPictureBox1.InitialImage = null;
             this.skinPictureBox1.Location = new System.Drawing.Point(7, 31);
             this.skinPictureBox1.Name = "skinPictureBox1";
@@ -263,6 +263,7 @@
             this.Controls.Add(this.skinLabel2);
             this.Controls.Add(this.skinLabel1);
             this.Controls.Add(this.skinPictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(350, 350);
             this.MinimumSize = new System.Drawing.Size(350, 350);
             this.Name = "sign_in";

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(updata_user));
             this.email_textbox = new CCWin.SkinControl.SkinTextBox();
             this.skinComboBox1 = new CCWin.SkinControl.SkinComboBox();
             this.skinRadioButton3 = new CCWin.SkinControl.SkinRadioButton();
@@ -216,6 +217,7 @@
             this.username_textbox.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.username_textbox.SkinTxt.MaxLength = 10;
             this.username_textbox.SkinTxt.Name = "BaseText";
+            this.username_textbox.SkinTxt.ReadOnly = true;
             this.username_textbox.SkinTxt.Size = new System.Drawing.Size(147, 18);
             this.username_textbox.SkinTxt.TabIndex = 0;
             this.username_textbox.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
@@ -362,6 +364,7 @@
             this.Controls.Add(this.skinLabel4);
             this.Controls.Add(this.skinLabel2);
             this.Controls.Add(this.skinLabel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "updata_user";

@@ -112,6 +112,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="signin1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>signin.resx</DependentUpon>
+    </Compile>
     <Compile Include="updata_user.cs">
       <SubType>Form</SubType>
     </Compile>

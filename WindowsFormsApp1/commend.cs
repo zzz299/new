@@ -54,11 +54,14 @@ namespace news
         private void button1_Click(object sender, EventArgs e)
         {
             String s = Interaction.InputBox("请输入评论", "评论框", "无", -1, -1);
-            string time = DateTime.Now.ToLongDateString().ToString();
-            Boolean addSuccess = db.addCommend(username, newsname, s, time);
-            if(addSuccess)
+            if (s != "")
             {
-                MessageBox.Show("评论成功!");
+                string time = DateTime.Now.ToLongDateString().ToString();
+                Boolean addSuccess = db.addCommend(username, newsname, s, time);
+                if (addSuccess)
+                {
+                    MessageBox.Show("评论成功!");
+                }
             }
         }
         /*评论完可刷新*/

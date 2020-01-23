@@ -216,6 +216,7 @@
             this.skinTextBox2.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTextBox2.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.skinTextBox2.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox2.SkinTxt.MaxLength = 10;
             this.skinTextBox2.SkinTxt.Name = "BaseText";
             this.skinTextBox2.SkinTxt.Size = new System.Drawing.Size(147, 18);
             this.skinTextBox2.SkinTxt.TabIndex = 0;
@@ -257,6 +258,7 @@
             this.skinTextBox3.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTextBox3.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.skinTextBox3.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox3.SkinTxt.MaxLength = 16;
             this.skinTextBox3.SkinTxt.Name = "BaseText";
             this.skinTextBox3.SkinTxt.Size = new System.Drawing.Size(147, 18);
             this.skinTextBox3.SkinTxt.TabIndex = 0;
@@ -298,6 +300,7 @@
             this.skinTextBox4.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTextBox4.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.skinTextBox4.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox4.SkinTxt.MaxLength = 16;
             this.skinTextBox4.SkinTxt.Name = "BaseText";
             this.skinTextBox4.SkinTxt.Size = new System.Drawing.Size(147, 18);
             this.skinTextBox4.SkinTxt.TabIndex = 0;
@@ -414,6 +417,7 @@
             this.skinTextBox5.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTextBox5.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.skinTextBox5.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox5.SkinTxt.MaxLength = 30;
             this.skinTextBox5.SkinTxt.Name = "BaseText";
             this.skinTextBox5.SkinTxt.Size = new System.Drawing.Size(104, 18);
             this.skinTextBox5.SkinTxt.TabIndex = 0;
@@ -517,6 +521,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "注册";
             ((System.ComponentModel.ISupportInitialize)(this.skinPictureBox1)).EndInit();
             this.ResumeLayout(false);

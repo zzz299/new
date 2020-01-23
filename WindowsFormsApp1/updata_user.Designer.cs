@@ -368,6 +368,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "updata_user";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改用户信息";
             this.Load += new System.EventHandler(this.updata_user_Load);
             this.ResumeLayout(false);

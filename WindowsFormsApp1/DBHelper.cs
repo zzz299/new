@@ -65,8 +65,12 @@ namespace news
                         return 2;
                     else if (limit == 1)//新闻审核员
                         return 3;
-                    else
+                    else if (limit == 2)//新闻录入员
                         return 4;
+                    else if (limit == 3)//版主
+                        return 5;
+                    else
+                        return 1;
                 }
             }
             else if (Havename)
@@ -127,15 +131,16 @@ namespace news
          * 添加新闻
          * 返回值：true添加成功；false添加失败
          */
-        public Boolean addNews(string title, int type, string author, string datatime, string context)
+        public Boolean addNews(string title, int type, string author, string datatime, string context, string pic)
         {
-            //标题，分类，作者，日期，正文
+            //标题，分类，作者，日期，图片路径，正文
             Boolean success = false;
+            //string search_psd = "";
             try
             {
                 con.Open();
                 string sql;
-                sql = "insert into news(title,type,author,time,context,passed)Values('"+ title + "','" + type + "','" + author + "','" + datatime + "','" + context + "','"+"0')";
+                sql = "insert into news(title,type,author,time,context,picture,passed)Values('" + title + "'," + type + ",'" + author + "','" + datatime + "','" + context + "','" + pic + "',0)";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 success = true;
@@ -324,10 +329,35 @@ namespace news
         }
 
         /*
+         * 获取特定title 的新闻
+         * 返回值：DataSet
+         */
+        public DataSet find_news(string title)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                con.Open();
+                string sql;
+                sql = "select * from news where title = '" + title + "'";
+                //获取数据数据适配器
+                MySqlDataAdapter data = new MySqlDataAdapter(sql, con);
+                data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
+                con.Close();
+            }
+            catch
+            {
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            return ds;
+        }
+
+        /*
          * 获取特定id 的新闻
          * 返回值：DataSet
          */
-        public DataSet find_news(int id)
+        public DataSet find_newsbyid(int id)
         {
             DataSet ds = new DataSet();
             try
@@ -352,16 +382,16 @@ namespace news
          * 修改新闻
          * 返回值：true修改成功
          */
-        public Boolean update_News(int id, string title, int type, string author, string datatime, string context)
+        public Boolean update_News(int id, string title, int type, string author, string datatime, string context, string pic)
         {
-            //标题，分类，作者，日期，正文
+            //标题，分类，作者，日期，图片路径，正文
             Boolean success = false;
             //string search_psd = "";
             try
             {
                 con.Open();
                 string sql;
-                sql = "update news set title = '" + title + "',type = " + type + ",author = '" + author + "',time = '" + datatime + "',context = '" + context  + "'  where id = " + id;
+                sql = "update news set title = '" + title + "',type = " + type + ",author = '" + author + "',time = '" + datatime + "',context = '" + context + "',picture = '" + pic + "'  where id = " + id;
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 success = true;
@@ -418,7 +448,28 @@ namespace news
             {
                 con.Open();
                 string sql;
-                sql = "select title,author,context from news where type = " + type + " and passed = 1";
+                sql = "select * from news where type = " + type + " and passed = 1 order by time";
+                //获取数据数据适配器
+                MySqlDataAdapter data = NewMethod1(sql);
+                data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
+                con.Close();
+            }
+            catch
+            {
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            return ds;
+        }
+        /*按照点赞数排序*/
+        public DataSet find_newsByTypezan(int type)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                con.Open();
+                string sql;
+                sql = "select * from news where type = " + type + " and passed = 1 order by zan DESC";
                 //获取数据数据适配器
                 MySqlDataAdapter data = NewMethod1(sql);
                 data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
@@ -544,5 +595,79 @@ namespace news
                 return true;
             return false;
         }
-    }
+        /*点赞新闻*/
+        public Boolean dianzan(string username,string newsname)
+        {
+            Boolean success = false;
+            DataSet ds = new DataSet();
+            try
+            {
+                con.Open();
+                string sql;
+                sql = "insert into zan(username,newsname)Values('" + username + "','" + newsname + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                sql = "select zan from news where title = '" + newsname + "'";
+                MySqlDataAdapter data = new MySqlDataAdapter(sql, con);
+                data.Fill(ds);
+                string a = ds.Tables[0].Rows[0]["zan"].ToString();
+                int s ;
+                int.TryParse(a, out s);
+                s = s + 1;
+                sql = "update  news set zan =" + s + " where title ='" + newsname + "'";
+                cmd = new MySqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                success = true;
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.ToString());
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            if (success)
+                return true;
+            return false;
+        }
+        /*获取版主信息*/
+        public int type1(string adminname)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                con.Open();
+                string sql;
+                sql = "select type from admin_info where name = '" + adminname + "'";
+                MySqlDataAdapter data = new MySqlDataAdapter(sql, con);
+                data.Fill(ds);//把查询到的数据放入DataSet ds数据集
+                con.Close();
+            }
+            catch
+            {
+
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            string s = ds.Tables[0].Rows[0]["type"].ToString();
+            if(s=="0")
+            {
+                return 0;
+            }
+            else if (s == "1")
+            {
+                return 1;
+            }
+            else if (s == "2")
+            {
+                return 2;
+            }
+            else 
+            {
+                return 3;
+            }
+        }
+    }   
+
 }

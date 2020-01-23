@@ -15,7 +15,8 @@ namespace news
     public partial class manager : CCSkinMain
     {
         DBHelper db;
-
+        System.IO.FileInfo file;
+        string destinationFile = "";
         int limit = -1;//-1初始值；0最高级别管理员；1新闻审核员
         public enum newsType
         {
@@ -23,7 +24,6 @@ namespace news
             国际 = 1,
             军事 = 2,
             历史 = 3
-
         }
         public manager()
         {
@@ -57,6 +57,35 @@ namespace news
             }
         }
 
+        /*上传图片*/
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "图片|*.jpg";
+            ofd.ValidateNames = true;
+            ofd.CheckPathExists = true;
+            ofd.CheckFileExists = true;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                file = new System.IO.FileInfo(ofd.FileName);
+                //其他代码
+                pic.Text = ofd.FileName;
+                destinationFile = @"\\pic\\" + file.Name;
+                try
+                {
+                    if (file.Exists)
+                    {
+                        file.CopyTo(System.Windows.Forms.Application.StartupPath + destinationFile, true);
+                        MessageBox.Show("图片上传成功");
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         private void addnews_Click(object sender, EventArgs e)
         {
             string tip = "";
@@ -72,6 +101,11 @@ namespace news
                 tip = tip + "作者不能为空；";
                 Isinputlegal = false;
             }
+            if (pic.Text.Length == 0)
+            {
+                tip = tip + "图片不能为空；";
+                Isinputlegal = false;
+            }
             if (newsarticle.Text.Length == 0)
             {
                 tip = tip + "文章内容不能为空；";
@@ -84,16 +118,18 @@ namespace news
                 string author_str = author.Text.ToString().Trim();
                 string datatime_str = dateTimePicker1.Text.ToString().Trim();
                 string context = newsarticle.Text.ToString().Trim();
+                string destinationFile = pic.Text.ToString().Trim();
                 Boolean context_success = true;
                 if (context_success)
                 {
-                    Boolean addSuccess = db.addNews(title_str, type_int, author_str, datatime_str, context);
+                    Boolean addSuccess = db.addNews(title_str, type_int, author_str, datatime_str, context, destinationFile);
                     switch (addSuccess)
                     {
                         case true:
                             MessageBox.Show("添加成功");
                             title.Text = "";
                             author.Text = "";
+                            pic.Text = "";
                             newsarticle.Text = "";
                             break;
                         case false:
@@ -155,19 +191,6 @@ namespace news
                 name = name_TextBox.Text.ToString().Trim();
                 password = password_TextBox.Text.ToString().Trim();
                 string limited = comboBox1.Text.ToString().Trim();
-                int limits=0;
-                if(limited=="0")
-                {
-                    limits = 0;
-                }
-                else if(limited=="1")
-                    {
-                    limits = 1;
-                }
-                else if(limited=="2")
-                {
-                    limits = 2;
-                }
                 int register_state = db.addAdmin(name, password,limited);
 
                 switch (register_state)
@@ -278,7 +301,6 @@ namespace news
                 MessageBox.Show("审核失败");
             }
         }
-
         private void skinRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             panel1.Visible = true;

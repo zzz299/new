@@ -144,10 +144,10 @@ namespace news
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
             this.listView1.LabelEdit = true;
-            this.listView1.Location = new System.Drawing.Point(128, 35);
+            this.listView1.Location = new System.Drawing.Point(128, 48);
             this.listView1.Name = "listView1";
             this.listView1.ShowGroups = false;
-            this.listView1.Size = new System.Drawing.Size(515, 360);
+            this.listView1.Size = new System.Drawing.Size(515, 347);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -246,6 +246,7 @@ namespace news
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(650, 400);
             this.Name = "welcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "悦天下";
             this.TitleSuitColor = true;
             this.Load += new System.EventHandler(this.welcome_Load);

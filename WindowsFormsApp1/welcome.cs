@@ -15,7 +15,7 @@ namespace news
     public partial class welcome : CCSkinMain
     {
         public int sign_in_state = 0;//0:未登录;1:用户登录;2:管理员登录
-        public int limit = -1;//管理员级别：-1普通用户；0最高级别管理员；1新闻审核员；2新闻录入员
+        public int limit = -1;//管理员级别：-1普通用户；0最高级别管理员；1新闻审核员；2新闻录入员;3版主
         public string name = "";
         DBHelper db;
         DataSet ds;
@@ -113,9 +113,9 @@ namespace news
                     ListViewItem lt = new ListViewItem();
                     //ListViewItem[] lvs = new ListViewItem[5];
                     lt.Text = "";
-                    lt.SubItems.Add(ds.Tables[0].Rows[s][0].ToString());
-                    lt.SubItems.Add(ds.Tables[0].Rows[s][1].ToString());
-                    lt.SubItems.Add(ds.Tables[0].Rows[s][2].ToString());
+                    lt.SubItems.Add(ds.Tables[0].Rows[s]["title"].ToString());
+                    lt.SubItems.Add(ds.Tables[0].Rows[s]["author"].ToString());
+                    lt.SubItems.Add(ds.Tables[0].Rows[s]["context"].ToString());
                     string d = " ";
                     lt.SubItems.Add(d);
                     listView1.Items.Add(lt);
@@ -130,8 +130,7 @@ namespace news
                 string x = listView1.SelectedItems[0].SubItems[1].Text.ToString();//选中行的第一列的值
                 string y = listView1.SelectedItems[0].SubItems[2].Text.ToString();//选中行的第二列的值
                 string z = listView1.SelectedItems[0].SubItems[3].Text.ToString();//选中行的第三列的值
-                MessageBox.Show(z);
-                Form s = new commend(x,name);
+                Form s = new newsdetail(x,name);
                 s.Show();
             }
             if(this.listView1.SelectedItems.Count > 0 && sign_in_state != 1)
@@ -148,7 +147,7 @@ namespace news
             string x = listView1.SelectedItems[0].SubItems[1].Text.ToString();//选中行的第一列的值
             string y = listView1.SelectedItems[0].SubItems[2].Text.ToString();//选中行的第二列的值
             string z = listView1.SelectedItems[0].SubItems[3].Text.ToString();//选中行的第三列的值
-            Form s = new commend(x,name);
+            Form s = new newsdetail(x,name);
             s.Show();
         }
 

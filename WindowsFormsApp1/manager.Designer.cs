@@ -41,12 +41,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(manager));
             this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
             this.skinTabPage1 = new CCWin.SkinControl.SkinTabPage();
             this.newsarticle = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel6 = new CCWin.SkinControl.SkinLabel();
             this.addnews = new CCWin.SkinControl.SkinButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
+            this.pic = new CCWin.SkinControl.SkinTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.skinLabel4 = new CCWin.SkinControl.SkinLabel();
             this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
@@ -75,10 +77,12 @@
             this.name_TextBox = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel7 = new CCWin.SkinControl.SkinLabel();
             this.skinTabPage2 = new CCWin.SkinControl.SkinTabPage();
+            this.skinLabel13 = new CCWin.SkinControl.SkinLabel();
             this.skinButton4 = new CCWin.SkinControl.SkinButton();
             this.skinButton5 = new CCWin.SkinControl.SkinButton();
             this.skinDataGridView2 = new CCWin.SkinControl.SkinDataGridView();
             this.skinTabPage4 = new CCWin.SkinControl.SkinTabPage();
+            this.skinLabel12 = new CCWin.SkinControl.SkinLabel();
             this.skinButton3 = new CCWin.SkinControl.SkinButton();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinDataGridView1 = new CCWin.SkinControl.SkinDataGridView();
@@ -123,7 +127,7 @@
             this.skinTabControl1.PageHover = null;
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 4;
+            this.skinTabControl1.SelectedIndex = 1;
             this.skinTabControl1.Size = new System.Drawing.Size(642, 428);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 0;
@@ -134,6 +138,9 @@
             this.skinTabPage1.Controls.Add(this.newsarticle);
             this.skinTabPage1.Controls.Add(this.skinLabel6);
             this.skinTabPage1.Controls.Add(this.addnews);
+            this.skinTabPage1.Controls.Add(this.button1);
+            this.skinTabPage1.Controls.Add(this.skinLabel5);
+            this.skinTabPage1.Controls.Add(this.pic);
             this.skinTabPage1.Controls.Add(this.dateTimePicker1);
             this.skinTabPage1.Controls.Add(this.skinLabel4);
             this.skinTabPage1.Controls.Add(this.skinLabel3);
@@ -162,7 +169,7 @@
             this.newsarticle.IsPasswordChat = '\0';
             this.newsarticle.IsSystemPasswordChar = false;
             this.newsarticle.Lines = new string[0];
-            this.newsarticle.Location = new System.Drawing.Point(25, 128);
+            this.newsarticle.Location = new System.Drawing.Point(25, 150);
             this.newsarticle.Margin = new System.Windows.Forms.Padding(0);
             this.newsarticle.MaxLength = 32767;
             this.newsarticle.MinimumSize = new System.Drawing.Size(28, 28);
@@ -222,9 +229,73 @@
             this.addnews.UseVisualStyleBackColor = false;
             this.addnews.Click += new System.EventHandler(this.addnews_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(521, 59);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 29);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // skinLabel5
+            // 
+            this.skinLabel5.AutoSize = true;
+            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel5.BorderColor = System.Drawing.Color.White;
+            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel5.Location = new System.Drawing.Point(261, 65);
+            this.skinLabel5.Name = "skinLabel5";
+            this.skinLabel5.Size = new System.Drawing.Size(68, 17);
+            this.skinLabel5.TabIndex = 12;
+            this.skinLabel5.Text = "上传图片：";
+            // 
+            // pic
+            // 
+            this.pic.BackColor = System.Drawing.Color.Transparent;
+            this.pic.DownBack = null;
+            this.pic.Icon = null;
+            this.pic.IconIsButton = false;
+            this.pic.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.pic.IsPasswordChat = '\0';
+            this.pic.IsSystemPasswordChar = false;
+            this.pic.Lines = new string[0];
+            this.pic.Location = new System.Drawing.Point(333, 59);
+            this.pic.Margin = new System.Windows.Forms.Padding(0);
+            this.pic.MaxLength = 32767;
+            this.pic.MinimumSize = new System.Drawing.Size(28, 28);
+            this.pic.MouseBack = null;
+            this.pic.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.pic.Multiline = false;
+            this.pic.Name = "pic";
+            this.pic.NormlBack = null;
+            this.pic.Padding = new System.Windows.Forms.Padding(5);
+            this.pic.ReadOnly = true;
+            this.pic.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.pic.Size = new System.Drawing.Size(185, 28);
+            // 
+            // 
+            // 
+            this.pic.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pic.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pic.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.pic.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.pic.SkinTxt.Name = "BaseText";
+            this.pic.SkinTxt.ReadOnly = true;
+            this.pic.SkinTxt.Size = new System.Drawing.Size(175, 18);
+            this.pic.SkinTxt.TabIndex = 0;
+            this.pic.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.pic.SkinTxt.WaterText = "";
+            this.pic.TabIndex = 11;
+            this.pic.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.pic.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.pic.WaterText = "";
+            this.pic.WordWrap = true;
+            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(332, 62);
+            this.dateTimePicker1.Location = new System.Drawing.Point(73, 102);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 10;
@@ -235,7 +306,7 @@
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
             this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(282, 65);
+            this.skinLabel4.Location = new System.Drawing.Point(22, 105);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(44, 17);
             this.skinLabel4.TabIndex = 8;
@@ -402,7 +473,7 @@
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.panel1.DownBack = null;
-            this.panel1.Location = new System.Drawing.Point(147, 341);
+            this.panel1.Location = new System.Drawing.Point(92, 338);
             this.panel1.MouseBack = null;
             this.panel1.Name = "panel1";
             this.panel1.NormlBack = null;
@@ -429,7 +500,8 @@
             this.comboBox1.Items.AddRange(new object[] {
             "0",
             "1",
-            "2"});
+            "2",
+            "3"});
             this.comboBox1.Location = new System.Drawing.Point(157, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(94, 24);
@@ -755,6 +827,7 @@
             // skinTabPage2
             // 
             this.skinTabPage2.BackColor = System.Drawing.Color.White;
+            this.skinTabPage2.Controls.Add(this.skinLabel13);
             this.skinTabPage2.Controls.Add(this.skinButton4);
             this.skinTabPage2.Controls.Add(this.skinButton5);
             this.skinTabPage2.Controls.Add(this.skinDataGridView2);
@@ -765,6 +838,18 @@
             this.skinTabPage2.TabIndex = 1;
             this.skinTabPage2.TabItemImage = null;
             this.skinTabPage2.Text = "编辑新闻";
+            // 
+            // skinLabel13
+            // 
+            this.skinLabel13.AutoSize = true;
+            this.skinLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel13.BorderColor = System.Drawing.Color.White;
+            this.skinLabel13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel13.Location = new System.Drawing.Point(3, 369);
+            this.skinLabel13.Name = "skinLabel13";
+            this.skinLabel13.Size = new System.Drawing.Size(217, 17);
+            this.skinLabel13.TabIndex = 5;
+            this.skinLabel13.Text = "*提示：双击任一单元格修改单元格内容";
             // 
             // skinButton4
             // 
@@ -846,6 +931,7 @@
             // skinTabPage4
             // 
             this.skinTabPage4.BackColor = System.Drawing.Color.White;
+            this.skinTabPage4.Controls.Add(this.skinLabel12);
             this.skinTabPage4.Controls.Add(this.skinButton3);
             this.skinTabPage4.Controls.Add(this.skinButton2);
             this.skinTabPage4.Controls.Add(this.skinDataGridView1);
@@ -856,6 +942,18 @@
             this.skinTabPage4.TabIndex = 3;
             this.skinTabPage4.TabItemImage = null;
             this.skinTabPage4.Text = "管理用户";
+            // 
+            // skinLabel12
+            // 
+            this.skinLabel12.AutoSize = true;
+            this.skinLabel12.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel12.BorderColor = System.Drawing.Color.White;
+            this.skinLabel12.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel12.Location = new System.Drawing.Point(12, 369);
+            this.skinLabel12.Name = "skinLabel12";
+            this.skinLabel12.Size = new System.Drawing.Size(217, 17);
+            this.skinLabel12.TabIndex = 3;
+            this.skinLabel12.Text = "*提示：双击任一单元格修改单元格内容";
             // 
             // skinButton3
             // 
@@ -1031,12 +1129,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 460);
             this.Controls.Add(this.skinTabControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(650, 460);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(650, 460);
             this.Name = "manager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "管理员管理";
             this.Load += new System.EventHandler(this.manager_Load);
             this.skinTabControl1.ResumeLayout(false);
@@ -1049,8 +1147,10 @@
             this.skinPanel1.ResumeLayout(false);
             this.skinPanel1.PerformLayout();
             this.skinTabPage2.ResumeLayout(false);
+            this.skinTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView2)).EndInit();
             this.skinTabPage4.ResumeLayout(false);
+            this.skinTabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView1)).EndInit();
             this.skinTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView3)).EndInit();
@@ -1074,6 +1174,9 @@
         private CCWin.SkinControl.SkinLabel skinLabel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private CCWin.SkinControl.SkinButton addnews;
+        private System.Windows.Forms.Button button1;
+        private CCWin.SkinControl.SkinLabel skinLabel5;
+        private CCWin.SkinControl.SkinTextBox pic;
         private CCWin.SkinControl.SkinLabel skinLabel6;
         private CCWin.SkinControl.SkinTextBox newsarticle;
         private CCWin.SkinControl.SkinLabel skinLabel9;
@@ -1094,9 +1197,11 @@
         private CCWin.SkinControl.SkinDataGridView skinDataGridView1;
         private CCWin.SkinControl.SkinButton skinButton2;
         private CCWin.SkinControl.SkinButton skinButton3;
+        private CCWin.SkinControl.SkinLabel skinLabel12;
         private CCWin.SkinControl.SkinButton skinButton4;
         private CCWin.SkinControl.SkinButton skinButton5;
         private CCWin.SkinControl.SkinDataGridView skinDataGridView2;
+        private CCWin.SkinControl.SkinLabel skinLabel13;
         private CCWin.SkinControl.SkinTabPage skinTabPage5;
         private CCWin.SkinControl.SkinButton skinButton6;
         private CCWin.SkinControl.SkinButton skinButton7;

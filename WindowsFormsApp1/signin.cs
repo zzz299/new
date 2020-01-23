@@ -80,7 +80,14 @@ namespace news
                         ((welcome)this.Tag).change_priviliege(2, name, 2);
                         this.Close();
                         break;
-
+                    case 5:
+                        MessageBox.Show("版主登陆成功");
+                        int type2 = db.type1(name);
+                        Form s = new banzhu(type2);
+                        s.Show();
+                        ((welcome)this.Tag).change_priviliege(1, name, -1);
+                        this.Close();
+                        break;
 
                 }
             }
@@ -94,9 +101,5 @@ namespace news
             ((Form)this.Tag).Show();
         }
 
-        private void skinLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

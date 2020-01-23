@@ -63,6 +63,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap skinPictureBox1_Image {
+            get {
+                object obj = ResourceManager.GetObject("skinPictureBox1.Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap timg1 {
             get {
                 object obj = ResourceManager.GetObject("timg1", resourceCulture);
@@ -87,7 +97,7 @@ namespace WindowsFormsApp1.Properties {
         ///    
         ///    ... ado.net/XML headers &amp; schema ...
         ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
-        ///    &lt;resheader name=&quot;version&quot;&gt;2. [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///    &lt;resheader n [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string welcome {
             get {

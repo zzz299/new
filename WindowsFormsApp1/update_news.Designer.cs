@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(update_news));
             this.newsarticle = new CCWin.SkinControl.SkinTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
+            this.pic = new CCWin.SkinControl.SkinTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.skinLabel4 = new CCWin.SkinControl.SkinLabel();
             this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
@@ -87,9 +90,73 @@
             this.newsarticle.WaterText = "";
             this.newsarticle.WordWrap = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(519, 89);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 29);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // skinLabel5
+            // 
+            this.skinLabel5.AutoSize = true;
+            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel5.BorderColor = System.Drawing.Color.White;
+            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel5.Location = new System.Drawing.Point(259, 95);
+            this.skinLabel5.Name = "skinLabel5";
+            this.skinLabel5.Size = new System.Drawing.Size(68, 17);
+            this.skinLabel5.TabIndex = 26;
+            this.skinLabel5.Text = "更换图片：";
+            // 
+            // pic
+            // 
+            this.pic.BackColor = System.Drawing.Color.Transparent;
+            this.pic.DownBack = null;
+            this.pic.Icon = null;
+            this.pic.IconIsButton = false;
+            this.pic.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.pic.IsPasswordChat = '\0';
+            this.pic.IsSystemPasswordChar = false;
+            this.pic.Lines = new string[0];
+            this.pic.Location = new System.Drawing.Point(331, 89);
+            this.pic.Margin = new System.Windows.Forms.Padding(0);
+            this.pic.MaxLength = 32767;
+            this.pic.MinimumSize = new System.Drawing.Size(28, 28);
+            this.pic.MouseBack = null;
+            this.pic.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.pic.Multiline = false;
+            this.pic.Name = "pic";
+            this.pic.NormlBack = null;
+            this.pic.Padding = new System.Windows.Forms.Padding(5);
+            this.pic.ReadOnly = true;
+            this.pic.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.pic.Size = new System.Drawing.Size(185, 28);
+            // 
+            // 
+            // 
+            this.pic.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pic.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pic.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.pic.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.pic.SkinTxt.Name = "BaseText";
+            this.pic.SkinTxt.ReadOnly = true;
+            this.pic.SkinTxt.Size = new System.Drawing.Size(175, 18);
+            this.pic.SkinTxt.TabIndex = 0;
+            this.pic.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.pic.SkinTxt.WaterText = "";
+            this.pic.TabIndex = 25;
+            this.pic.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.pic.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.pic.WaterText = "";
+            this.pic.WordWrap = true;
+            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(330, 95);
+            this.dateTimePicker1.Location = new System.Drawing.Point(71, 132);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
             this.dateTimePicker1.TabIndex = 24;
@@ -100,7 +167,7 @@
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
             this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(280, 99);
+            this.skinLabel4.Location = new System.Drawing.Point(20, 135);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(44, 17);
             this.skinLabel4.TabIndex = 23;
@@ -167,6 +234,12 @@
             "社会",
             "国际",
             "军事",
+            "时尚",
+            "娱乐",
+            "搞笑",
+            "八卦",
+            "体育",
+            "汽车",
             "历史"});
             this.newstype.Location = new System.Drawing.Point(67, 92);
             this.newstype.Name = "newstype";
@@ -208,7 +281,7 @@
             this.title.IsPasswordChat = '\0';
             this.title.IsSystemPasswordChar = false;
             this.title.Lines = new string[0];
-            this.title.Location = new System.Drawing.Point(67, 51);
+            this.title.Location = new System.Drawing.Point(67, 50);
             this.title.Margin = new System.Windows.Forms.Padding(0);
             this.title.MaxLength = 32767;
             this.title.MinimumSize = new System.Drawing.Size(28, 28);
@@ -274,6 +347,9 @@
             this.Controls.Add(this.skinLabel6);
             this.Controls.Add(this.addnews);
             this.Controls.Add(this.newsarticle);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.skinLabel5);
+            this.Controls.Add(this.pic);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.skinLabel4);
             this.Controls.Add(this.skinLabel3);
@@ -286,8 +362,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "update_news";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改新闻";
-            this.TitleOffset = new System.Drawing.Point(5, 2);
             this.Load += new System.EventHandler(this.update_news_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -297,6 +373,9 @@
         #endregion
 
         private CCWin.SkinControl.SkinTextBox newsarticle;
+        private System.Windows.Forms.Button button1;
+        private CCWin.SkinControl.SkinLabel skinLabel5;
+        private CCWin.SkinControl.SkinTextBox pic;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private CCWin.SkinControl.SkinLabel skinLabel4;
         private CCWin.SkinControl.SkinLabel skinLabel3;

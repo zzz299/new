@@ -47,6 +47,7 @@
             // 
             this.skinPictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.skinPictureBox1.ErrorImage = null;
+            this.skinPictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.skinPictureBox1_Image;
             this.skinPictureBox1.InitialImage = null;
             this.skinPictureBox1.Location = new System.Drawing.Point(7, 31);
             this.skinPictureBox1.Name = "skinPictureBox1";
@@ -65,7 +66,6 @@
             this.skinLabel1.Size = new System.Drawing.Size(56, 17);
             this.skinLabel1.TabIndex = 1;
             this.skinLabel1.Text = "用户名：";
-            this.skinLabel1.Click += new System.EventHandler(this.skinLabel1_Click);
             // 
             // skinLabel2
             // 
@@ -267,6 +267,7 @@
             this.MaximumSize = new System.Drawing.Size(350, 350);
             this.MinimumSize = new System.Drawing.Size(350, 350);
             this.Name = "sign_in";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
             ((System.ComponentModel.ISupportInitialize)(this.skinPictureBox1)).EndInit();
             this.ResumeLayout(false);

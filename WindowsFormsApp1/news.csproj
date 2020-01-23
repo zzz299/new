@@ -85,11 +85,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="commend.cs">
+    <Compile Include="banzhu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="commend.Designer.cs">
-      <DependentUpon>commend.cs</DependentUpon>
+    <Compile Include="banzhu.Designer.cs">
+      <DependentUpon>banzhu.cs</DependentUpon>
     </Compile>
     <Compile Include="DBHelper.cs" />
     <Compile Include="manager.cs">
@@ -97,6 +97,12 @@
     </Compile>
     <Compile Include="manager.Designer.cs">
       <DependentUpon>manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newsdetial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newsdetial.Designer.cs">
+      <DependentUpon>newsdetial.cs</DependentUpon>
     </Compile>
     <Compile Include="register.cs">
       <SubType>Form</SubType>
@@ -135,11 +141,14 @@
     <Compile Include="welcome.Designer.cs">
       <DependentUpon>welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="commend.resx">
-      <DependentUpon>commend.cs</DependentUpon>
+    <EmbeddedResource Include="banzhu.resx">
+      <DependentUpon>banzhu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="manager.resx">
       <DependentUpon>manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newsdetial.resx">
+      <DependentUpon>newsdetial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="register.resx">
       <DependentUpon>register.cs</DependentUpon>

